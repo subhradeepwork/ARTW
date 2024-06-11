@@ -5,7 +5,6 @@
     <meta name="viewport" content='width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes'>
     <title>Unity WebGL Player | Imagine</title>
     <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="ARPosition.js"></script>
     <style>
         html {
             height: -webkit-fill-available;
@@ -34,7 +33,7 @@
             z-index: 99;
         }
     </style>
-
+    <script src="ARPosition.js"></script>
 </head>
 <body>
     <script src="app.js" type="text/javascript"></script>
@@ -56,7 +55,7 @@
             </div>
         </div>
     </div>
-    <script src="Build/ARTW.loader.js"></script>
+    <script src="Build/b;d.loader.js"></script>
     <script>
             var container = document.querySelector("#unity-container");
             var canvas = document.querySelector("#unity-canvas");
@@ -74,9 +73,9 @@
                 document.getElementById("startWebcamDiv").style.display = "none";
 
                 createUnityInstance(document.querySelector("#unity-canvas"), {
-                    dataUrl: "Build/ARTW.data",
-                    frameworkUrl: "Build/ARTW.framework.js",
-                    codeUrl: "Build/ARTW.wasm",
+                    dataUrl: "Build/b;d.data",
+                    frameworkUrl: "Build/b;d.framework.js",
+                    codeUrl: "Build/b;d.wasm",
                     streamingAssetsUrl: "StreamingAssets",
                     companyName: "DefaultCompany",
                     productName: "Imagine",
@@ -91,6 +90,7 @@
                 ).then((unityInstance) => {
                     window.gameInstance = unityInstance;
                     window.unityInstance = unityInstance;
+                    setUnityInstance(unityInstance);
                     window.iTracker.startWebcam();
 
                     //[FIX]: some browsers (such as Wechat) does not allow webcam autoplay so we need to start the webcam manually via new button press
@@ -112,36 +112,11 @@
                 loadingBar.style.display = "block";
             }
 
-
             function StartCameraManually() {
                 document.getElementById("startWebcamManuallyDiv").style.display = "none";
                 iTracker.VIDEO.play()
             }
 
     </script>
-
-    <div id="unityContainer" style="width: 960px; height: 600px"></div>
-    <script>
-        var buildUrl = "Build";
-        var loaderUrl = buildUrl + "/build.loader.js";
-        var config = {
-            dataUrl: buildUrl + "/build.data",
-            frameworkUrl: buildUrl + "/build.framework.js",
-            codeUrl: buildUrl + "/build.wasm",
-            streamingAssetsUrl: "StreamingAssets",
-            companyName: "MyCompany",
-            productName: "MyProduct",
-            productVersion: "1.0",
-        };
-
-        createUnityInstance(document.querySelector("#unityContainer"), config, (progress) => {
-            console.log(progress);
-        }).then((unityInstance) => {
-            setUnityInstance(unityInstance);
-        }).catch((message) => {
-            alert(message);
-        });
-    </script>
-
 </body>
 </html>

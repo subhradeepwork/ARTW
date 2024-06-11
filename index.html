@@ -6,7 +6,7 @@
     <title>Unity WebGL Player | Imagine</title>
     <link rel="stylesheet" href="TemplateData/style.css">
     <style>
-        html {
+         html{
             height: -webkit-fill-available;
         }
 
@@ -33,7 +33,7 @@
             z-index: 99;
         }
     </style>
-    <script src="ARPosition.js"></script>
+
 </head>
 <body>
     <script src="app.js" type="text/javascript"></script>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <script src="Build/b;d.loader.js"></script>
+    <script src="Build/ARTW.loader.js"></script>
     <script>
             var container = document.querySelector("#unity-container");
             var canvas = document.querySelector("#unity-canvas");
@@ -69,13 +69,13 @@
             function StartCamera() {
                 canvas.style.width = window.innerWidth + "px";
                 canvas.style.height = window.innerHeight + "px";
-
+                
                 document.getElementById("startWebcamDiv").style.display = "none";
 
                 createUnityInstance(document.querySelector("#unity-canvas"), {
-                    dataUrl: "Build/b;d.data",
-                    frameworkUrl: "Build/b;d.framework.js",
-                    codeUrl: "Build/b;d.wasm",
+                    dataUrl: "Build/ARTW.data",
+                    frameworkUrl: "Build/ARTW.framework.js",
+                    codeUrl: "Build/ARTW.wasm",
                     streamingAssetsUrl: "StreamingAssets",
                     companyName: "DefaultCompany",
                     productName: "Imagine",
@@ -90,7 +90,6 @@
                 ).then((unityInstance) => {
                     window.gameInstance = unityInstance;
                     window.unityInstance = unityInstance;
-                    setUnityInstance(unityInstance);
                     window.iTracker.startWebcam();
 
                     //[FIX]: some browsers (such as Wechat) does not allow webcam autoplay so we need to start the webcam manually via new button press

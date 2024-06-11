@@ -5,8 +5,9 @@
     <meta name="viewport" content='width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes'>
     <title>Unity WebGL Player | Imagine</title>
     <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="ARPosition.js"></script>
     <style>
-         html{
+        html {
             height: -webkit-fill-available;
         }
 
@@ -69,7 +70,7 @@
             function StartCamera() {
                 canvas.style.width = window.innerWidth + "px";
                 canvas.style.height = window.innerHeight + "px";
-                
+
                 document.getElementById("startWebcamDiv").style.display = "none";
 
                 createUnityInstance(document.querySelector("#unity-canvas"), {
@@ -110,6 +111,14 @@
 
                 loadingBar.style.display = "block";
             }
+
+        createUnityInstance(document.querySelector("#unityContainer"), config, (progress) => {
+            console.log(progress);
+        }).then((unityInstance) => {
+            setUnityInstance(unityInstance);
+        }).catch((message) => {
+            alert(message);
+        });
 
             function StartCameraManually() {
                 document.getElementById("startWebcamManuallyDiv").style.display = "none";

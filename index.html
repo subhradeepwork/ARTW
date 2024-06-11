@@ -112,13 +112,6 @@
                 loadingBar.style.display = "block";
             }
 
-        createUnityInstance(document.querySelector("#unityContainer"), config, (progress) => {
-            console.log(progress);
-        }).then((unityInstance) => {
-            setUnityInstance(unityInstance);
-        }).catch((message) => {
-            alert(message);
-        });
 
             function StartCameraManually() {
                 document.getElementById("startWebcamManuallyDiv").style.display = "none";
@@ -126,5 +119,29 @@
             }
 
     </script>
+
+    <div id="unityContainer" style="width: 960px; height: 600px"></div>
+    <script>
+        var buildUrl = "Build";
+        var loaderUrl = buildUrl + "/build.loader.js";
+        var config = {
+            dataUrl: buildUrl + "/build.data",
+            frameworkUrl: buildUrl + "/build.framework.js",
+            codeUrl: buildUrl + "/build.wasm",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "MyCompany",
+            productName: "MyProduct",
+            productVersion: "1.0",
+        };
+
+        createUnityInstance(document.querySelector("#unityContainer"), config, (progress) => {
+            console.log(progress);
+        }).then((unityInstance) => {
+            setUnityInstance(unityInstance);
+        }).catch((message) => {
+            alert(message);
+        });
+    </script>
+
 </body>
 </html>
